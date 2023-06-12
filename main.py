@@ -33,7 +33,7 @@ def webhook_handle():
                                             top_p=1,
                                             frequency_penalty=0,
                                             presence_penalty=0)
-    text = response['choices'][0]['text']
+    text = "hi!"
     print(message+"\n"+text)
     request_body = {
             'recipient': {

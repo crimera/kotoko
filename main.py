@@ -2,6 +2,9 @@ import requests, os
 from flask import Flask, request
 app = Flask(__name__)
 
+pageToken = os.environ['PAGE_TOKEN']
+callbackToken = os.environ['CALLBACK_TOKEN']
+
 @app.route('/')
 def index():
     return 'Hello from Flask!'

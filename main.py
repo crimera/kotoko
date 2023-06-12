@@ -1,11 +1,6 @@
-import requests, os, openai
+import requests, os
 from flask import Flask, request
 app = Flask(__name__)
-
-callbackToken = os.environ['CALLBACK_TOKEN']
-pageToken = os.environ['PAGE_TOKEN']
-openai_key = os.environ['OPENAI_TOKEN']
-openai.api_key = openai_key
 
 @app.route('/')
 def index():
@@ -26,13 +21,6 @@ def webhook_handle():
     data = request.get_json()
     message = data['entry'][0]['messaging'][0]['message']['text']
     sender_id = data['entry'][0]['messaging'][0]['sender']['id']
-    response = openai.Completion.create(model="text-davinci-003",
-                                            prompt=message,
-                                            temperature=0.7,
-                                            max_tokens=256,
-                                            top_p=1,
-                                            frequency_penalty=0,
-                                            presence_penalty=0)
     text = "hi!"
     print(message+"\n"+text)
     request_body = {
